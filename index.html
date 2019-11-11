@@ -14,16 +14,17 @@
 <div class="vis-2 pos-2 size cont">
 <p class="para"><span class="font">Semantic Layer-Aware Low-Light Enhancement</span></p>
 </div>
-<div class="vis-2 pos-9 size-5 cont-2">
-<div class="vis-2 pos-4 size-5 colwrapper">
-<div class="vis-2 pos-4 size-6 cont-8">
-<picture class="img-2">
+<div class="vis-2 pos-9 size-2 cont-2">
+<div class="vis-2 pos-4 size-2 colwrapper">
+<div class="vis-2 pos-4 size-1 cont-8">
+
+<picture class="img-8">
 <source srcset="images/Fig1.jpg">
-<img src="images/Fig1.jpg" alt="" class="js img-2">
+<img src="images/Fig1.jpg" alt="" class="js img-8">
 </picture>
 </div>
 <p class="para-4"><span class="font-3">&nbsp;</span></p>
-<p class="para-4"><span class="font-3">&nbsp;</span></p>
+<p class="para-4"><span class="font-2">&nbsp;</span></p>
 <div class="vis-2 pos-10 size-7 cont-9">
 <p class="para-4"><span class="font-3">Figure 1:Framework of the proposed layer-aware Retinex model. The network first decompose the input image to its Reflectance, Illumination and Semantic-Layer. Then the components are feed into a following network, where they are divided into three separate branches and processed by the parallel models.</span></p>
 </div>
@@ -37,7 +38,7 @@
 <p class="para-5"><span class="font-6">Objective Results</span><span class="font-3">&nbsp;</span></p>
 
 <picture class="img-2">
-<source srcset="images/Table1.jpg">
+<source srcset="images/Table1.png">
 <img src="images/Table1.jpg" alt="" class="js img-2">
 </picture>
 <p class="para-4"><span class="font-3">&nbsp;</span></p>
@@ -46,20 +47,45 @@
 <img src="images/Table2.jpg" alt="" class="js img-2">
 </picture>
 <p class="para-4"><span class="font-3">&nbsp;</span></p>
-<picture class="img-2">
+<picture class="img-8">
 <source srcset="images/Table3.jpg">
-<img src="images/Table3.jpg" alt="" class="js img-2">
+<img src="images/Table3.jpg" alt="" class="js img-8">
 </picture>
 </div>
 
 <div class="vis-2 pos-11 size-1 cont">
 <p class="para-5"><span class="font-6">Subjective Results</span><span class="font-3">&nbsp;</span></p>
+<p class="para-5"><span class="font-3">Input,    Enlightengan</span><span class="font-3">&nbsp;</span></p>
+<p class="para-5"><span class="font-3">LIME,    DeepUPE</span><span class="font-3">&nbsp;</span></p>
+<p class="para-5"><span class="font-3">BIMEF,    Ours</span><span class="font-3">&nbsp;</span></p>
 </div>
 
-<div class="vis-2 pos-11 size-6 cont">
+<div class="vis-2 pos-11 size-10 cont">
 <picture class="img-2">
-<source srcset="images/Fig3.jpg">
-<img src="images/Fig3.jpg" alt="" class="js img-2">
+<source srcset="images/1.jpg">
+<img src="images/1.jpg" alt="" class="js img-9">
+</picture>
+<p class="para-4"><span class="font-3">&nbsp;</span></p>
+<picture class="img-2">
+<source srcset="images/2.jpg">
+<img src="images/2.jpg" alt="" class="js img-9">
+</picture>
+<p class="para-1"><span class="font-3">&nbsp;</span></p>
+
+<p class="para-5"><span class="font-3">Input, LIME, BIMEF, EnlightenGAN, DeepUPE, Ours</span>
+<picture class="img-2">
+<source srcset="images/4.jpg">
+<img src="images/4.jpg" alt="" class="js img-9">
+</picture>
+<p class="para-1"><span class="font-1">&nbsp;</span></p>
+<picture class="img-2">
+<source srcset="images/5.jpg">
+<img src="images/5.jpg" alt="" class="js img-9">
+</picture>
+<p class="para-1"><span class="font-1">&nbsp;</span></p>
+<picture class="img-2">
+<source srcset="images/6.jpg">
+<img src="images/6.jpg" alt="" class="js img-9">
 </picture>
 </div>
 
@@ -79,14 +105,29 @@
 <p class="para-4"><span class="font-3">&nbsp;</span></p>
 
 <p class="para-5"><span class="font-6">References</span></p>
-<!--
-<p class="para-4"><span class="font-3">[1] Xuan Dong, Guan Wang, Yi Pang, Weixin Li, Jiangtao Wen, Wei Meng, and Yao Lu. Fast efficient algorithm for enhancement of low lighting video. In IEEE International Conference on Multimedia and Expo, pages 1&ndash;6, 2011.</span></p>
-<p class="para-4"><span class="font-3">[2] Shuhang Wang, Jin Zheng, Hai Miao Hu, and Bo Li. Naturalness preserved enhancement algorithm for non-uniform illumination images. IEEE Transactions on Image Processing, 22(9):3538&ndash;48, 2013.</span></p>
-<p class="para-4"><span class="font-3">[3] Xueyang Fu, Delu Zeng, Yue Huang, Xiaoping Zhang, and Xinghao Ding. Aweighted variational model for simultaneous reflectance and illumination estimation. In Computer Vision and Pattern Recognition, pages 2782&ndash;2790, 2016.</span></p>
-<p class="para-4"><span class="font-3">[4] Xiaojie Guo, Yu Li, and Haibin Ling. Lime: Low-light image enhancement via illumination map estimation. IEEE Transactions on Image Processing, 26(2):982&ndash;993, 2017.</span></p>
-<p class="para-4"><span class="font-3">[5] Keda Ma, Kai Zeng, and Zhou Wang. Perceptual quality assessment for multi-exposure image fusion. IEEE Transactions on Image Processing, 24(11):3345, 2015.</span><span class="font-3">&nbsp;</span></p>
-<p class="para-4"><span class="font-3">[6] Xutong Ren, Mading Li, Wen-Huang Cheng, and Jiaying Liu. Joint enhancement and denoising method via sequential decomposition. In Circuits and Systems (ISCAS), 2018 IEEE International Symposium on, pages 1&ndash;5. IEEE, 2018.</span></p>
--->
+
+<p class="para-4"><span class="font-3">[1] S. M. Pizer, R. E. Johnston, J. P. Ericksen, B. C. Yankaskas, and K. E. Muller, “Contrast-limited adaptive histogram equalization: speed and effectiveness,” in Proc. of Conference on Visualization in Biomedical Computing, May 1990.</span></p>
+<p class="para-4"><span class="font-3">[2] M. Abdullah-Al-Wadud, M. H. Kabir, M. A. A. Dewan, and O. Chae, “A dynamic histogram equalization for image contrast enhancement,” IEEE Transactions on Consumer Electronics, vol. 53, no. 2, pp. 593&ndash;600, May 2007.</span></p>
+<p class="para-4"><span class="font-3">[3] L. Li, R. Wang, W. Wang, and W. Gao, “A low-light image enhancement method for both denoising and contrast enlarging,” in Proc. IEEE Int'l Conf. Image Processing, Sept 2015.</span></p>
+<p class="para-4"><span class="font-3">[4] X. Fu, D. Zeng, Y. Huang, Y. Liao, X. Ding, and J. Paisley, “A fusion-based enhancing method for weakly illuminated images,” Signal Processing, vol. 129, pp. 82&ndash;96, 2016.</span></p>
+<p class="para-4"><span class="font-3">[5] E. H. Land, “The retinex theory of color vision,” Sci. Amer, pp. 108&ndash;128, 1977.</span><span class="font-3">&nbsp;</span></p>
+<p class="para-4"><span class="font-3">[6] D. J. Jobson, Z. Rahman, and G. A. Woodell, “Properties and performance of a center/surround retinex,” IEEE Transactions on Image Processing, vol. 6, no. 3, pp. 451&ndash;462, Mar 1997.</span></p>
+<p class="para-4"><span class="font-3">[7] D. J. Jobson and Z. Rahman and G. A. Woodell, “A multiscale retinex for bridging the gap between color images and the human observation of scenes,” IEEE Transactions on Image Processing, vol. 6, no. 7, pp. 965&ndash;976, Jul 1997.</span></p>
+<p class="para-4"><span class="font-3">[8] K. G. Lore, A. Akintayo, and S. Sarkar, “Llnet: A deep autoencoder approach to natural low-light image enhancement,” Pattern Recognition, vol. 61, pp. 650&ndash;662, 2017.</span></p>
+<p class="para-4"><span class="font-3">[9] J. Cai, S. Gu, and L. Zhang, “Learning a deep single image contrast enhancer from multi-exposure images,” IEEE Transactions on Image Processing, vol. 27, no. 4, pp. 2049&ndash;2062, April 2018.</span></p>
+<p class="para-4"><span class="font-3">[10] C. Wei*, W. Wang*, W. Yang, and J. Liu, “Deep retinex decomposition for low-light enhancement,” in British Machine Vision Conference, Sept 2018.</span></p>
+<p class="para-4"><span class="font-3">[11] R. Wang, Q. Zhang, C.-W. Fu, X. Shen, W.-S. Zheng, and J. Jia, “Underexposed photo enhancement using deep illumination estimation,” in Proc. IEEE Int’l Conf. Computer Vision and Pattern Recognition, June 2019.</span></p>
+<p class="para-4"><span class="font-3">[12] Y. Jiang, X. Gong, D. Liu, Y. Cheng, C. Fang, X. Shen, J. Yang, P. Zhou, and Z. Wang, “Enlightengan: Deep light enhancement without paired supervision,” arXiv preprint arXiv:1906.06972, 2019.</span></p>
+<p class="para-4"><span class="font-3">[13] G. J. Brostow, J. Fauqueur, and R. Cipolla, “Semantic object classes in video: A high-definition ground truth database,” Pattern Recognition Letters, vol. 30, no. 2, pp. 88&ndash;97, 2009.</span></p>
+<p class="para-4"><span class="font-3">[14] M. Cordts, M. Omran, S. Ramos, T. Rehfeld, M. Enzweiler, R. Benenson, U. Franke, S. Roth, and B. Schiele, “The cityscapes dataset for semantic urban scene understanding,” in Proc. IEEE Int’l Conf. Computer Vision and Pattern Recognition, 2016.</span></p>
+<p class="para-4"><span class="font-3">[15] Y. Zhang, Y. Tian, Y. Kong, B. Zhong, and Y. Fu, “Residual dense network for image super-resolution,” in Proc. IEEE Int’l Conf. Computer Vision and Pattern Recognition, 2018.</span></p>
+<p class="para-4"><span class="font-3">[16] B. Mildenhall, J. T. Barron, J. Chen, D. Sharlet, R. Ng, and R. Carroll, “Burst denoising with kernel prediction networks,” in Proc. IEEE Int’l Conf. Computer Vision and Pattern Recognition, 2018.</span></p>
+<p class="para-4"><span class="font-3">[17] Z. Wang, A. C. Bovik, H. R. Sheikh, and E. P. Simoncelli, “Image quality assessment: From error visibility to structural similarity,” IEEE Transactions on Image Processing, vol. 13, no. 4, pp. 600&ndash;612, April 2004.</span></p>
+<p class="para-4"><span class="font-3">[18] A. Mittal, R. Soundararajan, and A. C. Bovik, “Making a “completely blind” image quality analyzer,” IEEE Signal Processing Letters, vol. 20, pp. 209&ndash;212, 2013.</span></p>
+<p class="para-4"><span class="font-3">[19] X. Guo, Y. Li, and H. Ling, “Lime: Low-light image enhancement via illumination map estimation,” IEEE Transactions on Image Processing, vol. 26, no. 2, pp. 982&ndash;993, Feb 2017.</span></p>
+<p class="para-4"><span class="font-3">[20] Z. Ying, G. Li, and W. Gao, “A Bio-Inspired Multi-Exposure Fusion Framework for Low-light Image Enhancement,” ArXiv e-prints, November 2017.</span></p>
+<p class="para-4"><span class="font-3">[21] A. Mittal, A. K. Moorthy, and A. C. Bovik, “No-reference image quality assessment in the spatial domain,” IEEE Transactions on Image Processing, vol. 21, no. 12, pp. 4695&ndash;4708, 2012.</span></p>
+<p class="para-4"><span class="font-3">[22] M. A. Saad, A. C. Bovik, and C. Charrier, “DCT statistics modelbased blind image quality assessment,” in Proc. IEEE Int’l Conf. Image Processing. IEEE, 2011.</span></p>
 </div>
 </div>
 <script type="text/javascript" src="js/jquery.js"></script>
