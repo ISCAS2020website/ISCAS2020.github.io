@@ -37,7 +37,7 @@
 <p class="para-4"><span class="font-3">&nbsp;</span></p>
 <p class="para-5"><span class="font-6">Objective Results</span><span class="font-3">&nbsp;</span></p>
 
-<picture class="img-2">
+<!-- <picture class="img-2">
 <source srcset="images/Table1.png">
 <img src="images/Table1.jpg" alt="" class="js img-2">
 </picture>
@@ -50,42 +50,189 @@
 <picture class="img-8">
 <source srcset="images/Table3.jpg">
 <img src="images/Table3.jpg" alt="" class="js img-8">
-</picture>
+</picture> -->
+<div class='obj-tables' >
+  <p class='font-4'> Table 1: Quantitative results on our synthetic dataset. </p>
+
+  <table class="tg" align=center>
+    <tr>
+      <th class="tg-c3ow">Methods</th>
+      <th class="tg-c3ow">PSNR</th>
+      <th class="tg-c3ow">SSIM</th>
+      <th class="tg-c3ow">NIQE</th>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">LIME</td>
+      <td class="tg-c3ow">13.65</td>
+      <td class="tg-c3ow">0.552</td>
+      <td class="tg-c3ow">4.003</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">BIMEF</td>
+      <td class="tg-c3ow">26.51</td>
+      <td class="tg-c3ow">0.824</td>
+      <td class="tg-c3ow">3.741</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">SICE</td>
+      <td class="tg-c3ow">19.69</td>
+      <td class="tg-c3ow">0.819</td>
+      <td class="tg-c3ow">3.534</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">DeepUPE</td>
+      <td class="tg-c3ow">20.18</td>
+      <td class="tg-c3ow">0.718</td>
+      <td class="tg-c3ow">3.112</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">EnlightenGAN</td>
+      <td class="tg-c3ow">35.07</td>
+      <td class="tg-c3ow">0.953</td>
+      <td class="tg-c3ow">3.286</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">RetinexNet</td>
+      <td class="tg-c3ow">23.99</td>
+      <td class="tg-c3ow">0.718</td>
+      <td class="tg-c3ow">4.387</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">Ours</td>
+      <td class="tg-7btt">36.24</td>
+      <td class="tg-7btt">0.971</td>
+      <td class="tg-7btt">2.972</td>
+    </tr>
+  </table>
+  
+  <p class='font-4'> Table 2: Quantitative results on our real dataset. </p>
+  <table class="tg" align=center>
+    <tr>
+      <th class="tg-c3ow">Methods</th>
+      <th class="tg-c3ow">NIQE</th>
+      <th class="tg-c3ow">Brisque</th>
+      <th class="tg-c3ow">Bliinds-II</th>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">Input</td>
+      <td class="tg-c3ow">3.485</td>
+      <td class="tg-c3ow">21.502</td>
+      <td class="tg-c3ow">7.415</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">Lime</td>
+      <td class="tg-c3ow">2.975</td>
+      <td class="tg-c3ow">18.753</td>
+      <td class="tg-c3ow">10.995</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">BIMEF</td>
+      <td class="tg-c3ow">3.048</td>
+      <td class="tg-7btt">17.445</td>
+      <td class="tg-c3ow">8.220</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">SICE</td>
+      <td class="tg-c3ow">3.413</td>
+      <td class="tg-c3ow">25.536</td>
+      <td class="tg-c3ow">20.355</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">EnlightenGAN</td>
+      <td class="tg-c3ow">3.273</td>
+      <td class="tg-c3ow">20.899</td>
+      <td class="tg-c3ow">17.015</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">DeepUPE</td>
+      <td class="tg-c3ow">3.046</td>
+      <td class="tg-c3ow">17.940</td>
+      <td class="tg-c3ow">7.320</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">RetinexNet</td>
+      <td class="tg-c3ow">3.213</td>
+      <td class="tg-c3ow">20.178</td>
+      <td class="tg-c3ow">21.275</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">Ours</td>
+      <td class="tg-7btt">2.858</td>
+      <td class="tg-c3ow">19.473</td>
+      <td class="tg-7btt">2.865</td>
+    </tr>
+  </table>
+  
+  <p class='font-4'> Table 3: Ablation study. </p>
+  
+  <table class="tg" align=center>
+    <tr>
+      <th class="tg-c3ow">Methods</th>
+      <th class="tg-c3ow">PSNR</th>
+      <th class="tg-c3ow">SSIM</th>
+      <th class="tg-c3ow">NIQE</th>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">RetinexNet-FT</td>
+      <td class="tg-c3ow">23.99</td>
+      <td class="tg-c3ow">0.718</td>
+      <td class="tg-c3ow">4.387</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">Ours-RDN</td>
+      <td class="tg-c3ow">33.98</td>
+      <td class="tg-c3ow">0.959</td>
+      <td class="tg-c3ow">3.112</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">Ours-Layer-R</td>
+      <td class="tg-c3ow">34.15</td>
+      <td class="tg-c3ow">0.965</td>
+      <td class="tg-c3ow">3.052</td>
+    </tr>
+    <tr>
+      <td class="tg-c3ow">Ours</td>
+      <td class="tg-7btt">36.24</td>
+      <td class="tg-7btt">0.971</td>
+      <td class="tg-7btt">2.972</td>
+    </tr>
+  </table>
+</div>
 </div>
 
 <div class="vis-2 pos-11 size-1 cont">
-<p class="para-5"><span class="font-6">Subjective Results</span><span class="font-3">&nbsp;</span></p>
-<p class="para-5"><span class="font-3">Input,    Enlightengan</span><span class="font-3">&nbsp;</span></p>
-<p class="para-5"><span class="font-3">LIME,    DeepUPE</span><span class="font-3">&nbsp;</span></p>
-<p class="para-5"><span class="font-3">BIMEF,    Ours</span><span class="font-3">&nbsp;</span></p>
+<p class="para-5" align><span class="font-6">Subjective Results</span></p>
+<p><span class="font-3">Input,    Enlightengan</span><span class="font-3">&nbsp;</span></p>
+<p><span class="font-3">LIME,    DeepUPE</span><span class="font-3">&nbsp;</span></p>
+<p><span class="font-3">BIMEF,    Ours</span><span class="font-3">&nbsp;</span></p>
 </div>
 
 <div class="vis-2 pos-11 size-10 cont">
 <picture class="img-2">
 <source srcset="images/1.jpg">
-<img src="images/1.jpg" alt="" class="js img-9">
+<img src="images/1.jpg" alt="" class="sub-img">
 </picture>
 <p class="para-4"><span class="font-3">&nbsp;</span></p>
 <picture class="img-2">
 <source srcset="images/2.jpg">
-<img src="images/2.jpg" alt="" class="js img-9">
+<img src="images/2.jpg" alt="" class="sub-img">
 </picture>
 <p class="para-1"><span class="font-3">&nbsp;</span></p>
 
-<p class="para-5"><span class="font-3">Input, LIME, BIMEF, EnlightenGAN, DeepUPE, Ours</span>
+<p align="center"><span class="font-3">Input,     LIME,     BIMEF,     EnlightenGAN,     DeepUPE,     Ours</span></p>
 <picture class="img-2">
 <source srcset="images/4.jpg">
-<img src="images/4.jpg" alt="" class="js img-9">
+<img src="images/4.jpg" alt="" class="syn-img">
 </picture>
 <p class="para-1"><span class="font-1">&nbsp;</span></p>
 <picture class="img-2">
 <source srcset="images/5.jpg">
-<img src="images/5.jpg" alt="" class="js img-9">
+<img src="images/5.jpg" alt="" class="syn-img">
 </picture>
 <p class="para-1"><span class="font-1">&nbsp;</span></p>
 <picture class="img-2">
 <source srcset="images/6.jpg">
-<img src="images/6.jpg" alt="" class="js img-9">
+<img src="images/6.jpg" alt="" class="syn-img">
 </picture>
 </div>
 
