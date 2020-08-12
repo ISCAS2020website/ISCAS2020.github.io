@@ -1,286 +1,151 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=960">
-<title>ISCAS2020 Semantic Layer-Aware Low-Light Enhancement</title>
-<link rel="stylesheet" type="text/css" href="css/site.20180920212709.css">
-<!--[if lte IE 7]>
-<link rel="stylesheet" type="text/css" href="css/site.20180920212709-lteIE7.css">
-<![endif]-->
-</head>
-<body id="body">
-<div class="pos vis section">
-<div class="vis-2 pos-2 size cont">
-<p class="para"><span class="font">Semantic Layer-Aware Low-Light Enhancement</span></p>
-</div>
-<div class="vis-2 pos-9 size-2 cont-2">
-<div class="vis-2 pos-4 size-2 colwrapper">
-<div class="vis-2 pos-4 size-1 cont-8">
-
-<picture class="img-8">
-<source srcset="images/Fig1.jpg">
-<img src="images/Fig1.jpg" alt="" class="js img-8">
-</picture>
-</div>
-<p class="para-4"><span class="font-3">&nbsp;</span></p>
-<p class="para-4"><span class="font-2">&nbsp;</span></p>
-<div class="vis-2 pos-10 size-7 cont-9">
-<p class="para-4"><span class="font-3">Figure 1:Framework of the proposed layer-aware Retinex model. The network first decompose the input image to its Reflectance, Illumination and Semantic-Layer. Then the components are feed into a following network, where they are divided into three separate branches and processed by the parallel models.</span></p>
-</div>
-</div>
-</div>
-
-<div class="vis-2 pos-11 size-8 cont">
-<p class="para-5"><span class="font-6">Abstract</span></p>
-<p class="para-4"><span class="font-3">Retinex model is widely adopted in various low-light image enhancement tasks, in which a given image is decomposed into its reflectance and illumination. While the ill-posed decomposition is usually handled by hand-crafted constraints and parameters, deep-learning based approaches have been explored these years. In this paper, we extend the idea of basic decomposition that ignores the latent semantic information. We extract the segmentation layer as well as the reflectance and illumination. Based on the observation that various objects and backgrounds have different material, reflection and perspective attributes, regions of a single low-light image may require different  adjustment and enhancement regarding contrast, illumination and noise. We propose an enhancement pipeline with three parts which effectively utilize the semantic layer information. We concurrently enhance separate regions of a low-light image, namely sky, ground and objects for outdoor scenes. We conduct extensive experiments on both synthetic data and real world images, and  demonstrate the superiority of our method over current state-of-the-art low-light enhancement algorithms.</span></p>
-<p class="para-4"><span class="font-3">&nbsp;</span></p>
-<p class="para-5"><span class="font-6">Objective Results</span><span class="font-3">&nbsp;</span></p>
-
-<!-- <picture class="img-2">
-<source srcset="images/Table1.png">
-<img src="images/Table1.jpg" alt="" class="js img-2">
-</picture>
-<p class="para-4"><span class="font-3">&nbsp;</span></p>
-<picture class="img-2">
-<source srcset="images/Table2.jpg">
-<img src="images/Table2.jpg" alt="" class="js img-2">
-</picture>
-<p class="para-4"><span class="font-3">&nbsp;</span></p>
-<picture class="img-8">
-<source srcset="images/Table3.jpg">
-<img src="images/Table3.jpg" alt="" class="js img-8">
-</picture> -->
-<div class='obj-tables' >
-  <p class='font-4'> Table 1: Quantitative results on our synthetic dataset. </p>
-
-  <table class="tg" align=center>
-    <tr>
-      <th class="tg-c3ow">Methods</th>
-      <th class="tg-c3ow">PSNR</th>
-      <th class="tg-c3ow">SSIM</th>
-      <th class="tg-c3ow">NIQE</th>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">LIME</td>
-      <td class="tg-c3ow">13.65</td>
-      <td class="tg-c3ow">0.552</td>
-      <td class="tg-c3ow">4.003</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">BIMEF</td>
-      <td class="tg-c3ow">26.51</td>
-      <td class="tg-c3ow">0.824</td>
-      <td class="tg-c3ow">3.741</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">SICE</td>
-      <td class="tg-c3ow">19.69</td>
-      <td class="tg-c3ow">0.819</td>
-      <td class="tg-c3ow">3.534</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">DeepUPE</td>
-      <td class="tg-c3ow">20.18</td>
-      <td class="tg-c3ow">0.718</td>
-      <td class="tg-c3ow">3.112</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">EnlightenGAN</td>
-      <td class="tg-c3ow">35.07</td>
-      <td class="tg-c3ow">0.953</td>
-      <td class="tg-c3ow">3.286</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">RetinexNet</td>
-      <td class="tg-c3ow">23.99</td>
-      <td class="tg-c3ow">0.718</td>
-      <td class="tg-c3ow">4.387</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">Ours</td>
-      <td class="tg-7btt">36.24</td>
-      <td class="tg-7btt">0.971</td>
-      <td class="tg-7btt">2.972</td>
-    </tr>
-  </table>
-  
-  <p class='font-4'> Table 2: Quantitative results on our real dataset. </p>
-  <table class="tg" align=center>
-    <tr>
-      <th class="tg-c3ow">Methods</th>
-      <th class="tg-c3ow">NIQE</th>
-      <th class="tg-c3ow">Brisque</th>
-      <th class="tg-c3ow">Bliinds-II</th>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">Input</td>
-      <td class="tg-c3ow">3.485</td>
-      <td class="tg-c3ow">21.502</td>
-      <td class="tg-c3ow">7.415</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">Lime</td>
-      <td class="tg-c3ow">2.975</td>
-      <td class="tg-c3ow">18.753</td>
-      <td class="tg-c3ow">10.995</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">BIMEF</td>
-      <td class="tg-c3ow">3.048</td>
-      <td class="tg-7btt">17.445</td>
-      <td class="tg-c3ow">8.220</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">SICE</td>
-      <td class="tg-c3ow">3.413</td>
-      <td class="tg-c3ow">25.536</td>
-      <td class="tg-c3ow">20.355</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">EnlightenGAN</td>
-      <td class="tg-c3ow">3.273</td>
-      <td class="tg-c3ow">20.899</td>
-      <td class="tg-c3ow">17.015</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">DeepUPE</td>
-      <td class="tg-c3ow">3.046</td>
-      <td class="tg-c3ow">17.940</td>
-      <td class="tg-c3ow">7.320</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">RetinexNet</td>
-      <td class="tg-c3ow">3.213</td>
-      <td class="tg-c3ow">20.178</td>
-      <td class="tg-c3ow">21.275</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">Ours</td>
-      <td class="tg-7btt">2.858</td>
-      <td class="tg-c3ow">19.473</td>
-      <td class="tg-7btt">2.865</td>
-    </tr>
-  </table>
-  
-  <p class='font-4'> Table 3: Ablation study. </p>
-  
-  <table class="tg" align=center>
-    <tr>
-      <th class="tg-c3ow">Methods</th>
-      <th class="tg-c3ow">PSNR</th>
-      <th class="tg-c3ow">SSIM</th>
-      <th class="tg-c3ow">NIQE</th>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">RetinexNet-FT</td>
-      <td class="tg-c3ow">23.99</td>
-      <td class="tg-c3ow">0.718</td>
-      <td class="tg-c3ow">4.387</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">Ours-RDN</td>
-      <td class="tg-c3ow">33.98</td>
-      <td class="tg-c3ow">0.959</td>
-      <td class="tg-c3ow">3.112</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">Ours-Layer-R</td>
-      <td class="tg-c3ow">34.15</td>
-      <td class="tg-c3ow">0.965</td>
-      <td class="tg-c3ow">3.052</td>
-    </tr>
-    <tr>
-      <td class="tg-c3ow">Ours</td>
-      <td class="tg-7btt">36.24</td>
-      <td class="tg-7btt">0.971</td>
-      <td class="tg-7btt">2.972</td>
-    </tr>
-  </table>
-</div>
-</div>
-
-<div class="vis-2 pos-11 size-1 cont">
-<p class="para-5" align><span class="font-6">Subjective Results</span></p>
-<p><span class="font-3">Input,    Enlightengan</span><span class="font-3">&nbsp;</span></p>
-<p><span class="font-3">LIME,    DeepUPE</span><span class="font-3">&nbsp;</span></p>
-<p><span class="font-3">BIMEF,    Ours</span><span class="font-3">&nbsp;</span></p>
-</div>
-
-<div class="vis-2 pos-11 size-10 cont">
-<picture class="img-2">
-<source srcset="images/1.jpg">
-<img src="images/1.jpg" alt="" class="sub-img">
-</picture>
-<p class="para-4"><span class="font-3">&nbsp;</span></p>
-<picture class="img-2">
-<source srcset="images/2.jpg">
-<img src="images/2.jpg" alt="" class="sub-img">
-</picture>
-<p class="para-1"><span class="font-3">&nbsp;</span></p>
-
-<p align="center"><span class="font-3">Input,     LIME,     BIMEF,     EnlightenGAN,     DeepUPE,     Ours</span></p>
-<picture class="img-2">
-<source srcset="images/4.jpg">
-<img src="images/4.jpg" alt="" class="syn-img">
-</picture>
-<p class="para-1"><span class="font-1">&nbsp;</span></p>
-<picture class="img-2">
-<source srcset="images/5.jpg">
-<img src="images/5.jpg" alt="" class="syn-img">
-</picture>
-<p class="para-1"><span class="font-1">&nbsp;</span></p>
-<picture class="img-2">
-<source srcset="images/6.jpg">
-<img src="images/6.jpg" alt="" class="syn-img">
-</picture>
-</div>
-
-<div class="vis-2 pos-14 size-16 cont-13">
-<p class="para-5"><span class="font-6">Download Links</span><span class="font-3">&nbsp;</span></p>
-<ul class="pos-21">
-<li class="para-6"><span class="font-7">&bull; </span><span class="font-7">Datasets</span></li>
-</ul>
+<!DOCTYPE HTML>
 <!--
-<p class="para-4"><span class="font-3">&nbsp;&nbsp;&nbsp;&nbsp;Synthetic Image Pairs: </span><span class="font-4"><a href="https://drive.google.com/open?id=1G6fi9Kiu7CDnW2Sh7UQ5ikvScRv8Q14F">Google Drive</a></span><span class="font-3">, </span><span class="font-4"><a href="https://pan.baidu.com/s/1drsMAkRMlwd9vObAM_9Iog">Baidu Pan</a></span></p>
-<p class="para-4"><span class="font-3">&nbsp;&nbsp;&nbsp;&nbsp;Testing Images: </span><span class="font-4"><a href="https://drive.google.com/open?id=1OvHuzPBZRBMDWV5AKI-TtIxPCYY8EW70">Google Drive</a></span><span class="font-3">, </span><span class="font-4"><a href="https://pan.baidu.com/s/1G2qg3oS12MmP8_dFlVRRug">Baidu Pan</a></span></p>
+	Miniport by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<ul class="pos-21">
-<li class="para-6"><span class="font-7">&bull; </span><span class="font-7">Codes</span></li>
-</ul>
-<!-- <p class="para-4"><span class="font-3">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="font-4"><a href="https://github.com/weichen582/RetinexNet">Github</a></span></p> -->
-<p class="para-4"><span class="font-3">&nbsp;</span></p>
+<html>
+	<head>
+		<title>Integrating Semantic Segmentation and Retinex Model for Low Light Image Enhancement</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+	</head>
+	<body>
 
-<p class="para-5"><span class="font-6">References</span></p>
 
-<p class="para-4"><span class="font-3">[1] S. M. Pizer, R. E. Johnston, J. P. Ericksen, B. C. Yankaskas, and K. E. Muller, “Contrast-limited adaptive histogram equalization: speed and effectiveness,” in Proc. of Conference on Visualization in Biomedical Computing, May 1990.</span></p>
-<p class="para-4"><span class="font-3">[2] M. Abdullah-Al-Wadud, M. H. Kabir, M. A. A. Dewan, and O. Chae, “A dynamic histogram equalization for image contrast enhancement,” IEEE Transactions on Consumer Electronics, vol. 53, no. 2, pp. 593&ndash;600, May 2007.</span></p>
-<p class="para-4"><span class="font-3">[3] L. Li, R. Wang, W. Wang, and W. Gao, “A low-light image enhancement method for both denoising and contrast enlarging,” in Proc. IEEE Int'l Conf. Image Processing, Sept 2015.</span></p>
-<p class="para-4"><span class="font-3">[4] X. Fu, D. Zeng, Y. Huang, Y. Liao, X. Ding, and J. Paisley, “A fusion-based enhancing method for weakly illuminated images,” Signal Processing, vol. 129, pp. 82&ndash;96, 2016.</span></p>
-<p class="para-4"><span class="font-3">[5] E. H. Land, “The retinex theory of color vision,” Sci. Amer, pp. 108&ndash;128, 1977.</span><span class="font-3">&nbsp;</span></p>
-<p class="para-4"><span class="font-3">[6] D. J. Jobson, Z. Rahman, and G. A. Woodell, “Properties and performance of a center/surround retinex,” IEEE Transactions on Image Processing, vol. 6, no. 3, pp. 451&ndash;462, Mar 1997.</span></p>
-<p class="para-4"><span class="font-3">[7] D. J. Jobson and Z. Rahman and G. A. Woodell, “A multiscale retinex for bridging the gap between color images and the human observation of scenes,” IEEE Transactions on Image Processing, vol. 6, no. 7, pp. 965&ndash;976, Jul 1997.</span></p>
-<p class="para-4"><span class="font-3">[8] K. G. Lore, A. Akintayo, and S. Sarkar, “Llnet: A deep autoencoder approach to natural low-light image enhancement,” Pattern Recognition, vol. 61, pp. 650&ndash;662, 2017.</span></p>
-<p class="para-4"><span class="font-3">[9] J. Cai, S. Gu, and L. Zhang, “Learning a deep single image contrast enhancer from multi-exposure images,” IEEE Transactions on Image Processing, vol. 27, no. 4, pp. 2049&ndash;2062, April 2018.</span></p>
-<p class="para-4"><span class="font-3">[10] C. Wei*, W. Wang*, W. Yang, and J. Liu, “Deep retinex decomposition for low-light enhancement,” in British Machine Vision Conference, Sept 2018.</span></p>
-<p class="para-4"><span class="font-3">[11] R. Wang, Q. Zhang, C.-W. Fu, X. Shen, W.-S. Zheng, and J. Jia, “Underexposed photo enhancement using deep illumination estimation,” in Proc. IEEE Int’l Conf. Computer Vision and Pattern Recognition, June 2019.</span></p>
-<p class="para-4"><span class="font-3">[12] Y. Jiang, X. Gong, D. Liu, Y. Cheng, C. Fang, X. Shen, J. Yang, P. Zhou, and Z. Wang, “Enlightengan: Deep light enhancement without paired supervision,” arXiv preprint arXiv:1906.06972, 2019.</span></p>
-<p class="para-4"><span class="font-3">[13] G. J. Brostow, J. Fauqueur, and R. Cipolla, “Semantic object classes in video: A high-definition ground truth database,” Pattern Recognition Letters, vol. 30, no. 2, pp. 88&ndash;97, 2009.</span></p>
-<p class="para-4"><span class="font-3">[14] M. Cordts, M. Omran, S. Ramos, T. Rehfeld, M. Enzweiler, R. Benenson, U. Franke, S. Roth, and B. Schiele, “The cityscapes dataset for semantic urban scene understanding,” in Proc. IEEE Int’l Conf. Computer Vision and Pattern Recognition, 2016.</span></p>
-<p class="para-4"><span class="font-3">[15] Y. Zhang, Y. Tian, Y. Kong, B. Zhong, and Y. Fu, “Residual dense network for image super-resolution,” in Proc. IEEE Int’l Conf. Computer Vision and Pattern Recognition, 2018.</span></p>
-<p class="para-4"><span class="font-3">[16] B. Mildenhall, J. T. Barron, J. Chen, D. Sharlet, R. Ng, and R. Carroll, “Burst denoising with kernel prediction networks,” in Proc. IEEE Int’l Conf. Computer Vision and Pattern Recognition, 2018.</span></p>
-<p class="para-4"><span class="font-3">[17] Z. Wang, A. C. Bovik, H. R. Sheikh, and E. P. Simoncelli, “Image quality assessment: From error visibility to structural similarity,” IEEE Transactions on Image Processing, vol. 13, no. 4, pp. 600&ndash;612, April 2004.</span></p>
-<p class="para-4"><span class="font-3">[18] A. Mittal, R. Soundararajan, and A. C. Bovik, “Making a “completely blind” image quality analyzer,” IEEE Signal Processing Letters, vol. 20, pp. 209&ndash;212, 2013.</span></p>
-<p class="para-4"><span class="font-3">[19] X. Guo, Y. Li, and H. Ling, “Lime: Low-light image enhancement via illumination map estimation,” IEEE Transactions on Image Processing, vol. 26, no. 2, pp. 982&ndash;993, Feb 2017.</span></p>
-<p class="para-4"><span class="font-3">[20] Z. Ying, G. Li, and W. Gao, “A Bio-Inspired Multi-Exposure Fusion Framework for Low-light Image Enhancement,” ArXiv e-prints, November 2017.</span></p>
-<p class="para-4"><span class="font-3">[21] A. Mittal, A. K. Moorthy, and A. C. Bovik, “No-reference image quality assessment in the spatial domain,” IEEE Transactions on Image Processing, vol. 21, no. 12, pp. 4695&ndash;4708, 2012.</span></p>
-<p class="para-4"><span class="font-3">[22] M. A. Saad, A. C. Bovik, and C. Charrier, “DCT statistics modelbased blind image quality assessment,” in Proc. IEEE Int’l Conf. Image Processing. IEEE, 2011.</span></p>
-</div>
-</div>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/index.20180920212709.js"></script>
-<script type="text/javascript">
-var ver=RegExp(/Mozilla\/5\.0 \(Linux; .; Android ([\d.]+)/).exec(navigator.userAgent);if(ver&&parseFloat(ver[1])<5){document.getElementsByTagName('body')[0].className+=' whitespacefix';}
-</script>
-</body>
-</html>
+		<!-- Work -->
+			<div class="wrapper style2">	
+        <div class="container" style="width:1200px">		
+			<h2>Integrating Semantic Segmentation and Retinex Model for Low Light Image Enhancement</h2>
+          <p><strong><a href="https://xfw-go.github.io/">Minhao Fan</a>,   
+          <a href="https://daooshee.github.io/website/">Wenjing Wang</a>,   
+          <a href="https://flyywh.github.io/">Wenhan Yang</a>  
+          and <a href="http://39.96.165.147/people/liujiaying.html">Jiaying Liu</a></strong></p>
+          <p><strong> Proceedings of the 28th ACM International Conference on Multimedia (MM '20)</strong></p>
+
+          <img src="images/Fig-1.png" alt="" width="1200px">  <br>
+          <p><strong>Figure. Comparison results of low-light enhancement. Detail blurriness and weird artifacts are pointed by yellow and blue arrows, respectively. </strong></p>
+
+          
+			<div id="Abstract">
+			<h3 align="left">Abstract</h3>
+			<p align="left"><strong>Retinex model is widely adopted in various low-light image enhancement tasks. The basic idea of the Retinex theory is to decompose images into reflectance and illumination. The ill-posed decomposition is usually handled by hand-crafted constraints and priors. With the recently emerging deep-learning based approaches as tools, in this paper, we integrate the idea of Retinex decomposition and semantic information awareness. Based on the observation that various objects and backgrounds have different material, reflection and perspective attributes, regions of a single low-light image may require different  adjustment and enhancement regarding contrast, illumination and noise. We propose an enhancement pipeline with three parts that effectively utilize the semantic layer information. Specifically, we extract the segmentation, reflectance as well as illumination layers, and concurrently enhance every separate region, i.e. sky, ground and objects for outdoor scenes. Extensive experiments on both synthetic data and real world images demonstrate the superiority of our method over current state-of-the-art low-light enhancement algorithms.</strong></p></div>
+													
+			<div id="Materials">
+			<h3 align="left">Code and dataset</h3>
+				<p align="left"><strong>To be released soon</strong></p>
+<!--			
+          <p align="left"><strong>Please check the <a href="https://github.com/cchen156/Learning-to-See-in-the-Dark.git">[Github page]</a> for instructions.</strong></p>
+-->
+          </div>
+          
+          <div id="Materials">
+					<h3 align="left">Paper</h3>        
+          <p align="left"><strong><a href="">[arXiv]</a></strong></p>
+          </div>
+
+		  <div id="More visual results">
+			<h3 align="left">More visual results</h3>                      
+		  </div>
+		  
+          <p align="left"><strong>Comparation on dim daytime images</strong></p>
+<!--		  
+					<div class="container" style="width:1200px">
+						<div class="row">
+						    <div class="2u">
+									<a href="SID/examples/6s.html" class="image featured"><img src="SID/figures/6s_ours_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+
+						    <div class="2u">
+									<a href="SID/examples/106.html" class="image featured"><img src="SID/figures/10106_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/82.html" class="image featured"><img src="SID/figures/10082_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/105.html" class="image featured"><img src="SID/figures/10105_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/16.html" class="image featured"><img src="SID/figures/10016_00_250_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/167.html" class="image featured"><img src="SID/figures/10167_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/book.html" class="image featured"><img src="SID/figures/30014_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/213.html" class="image featured"><img src="SID/figures/10213_00_100_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/203.html" class="image featured"><img src="SID/figures/10203_00_250_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/199.html" class="image featured"><img src="SID/figures/10199_00_250_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/68.html" class="image featured"><img src="SID/figures/10068_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/29.html" class="image featured"><img src="SID/figures/10029_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/27.html" class="image featured"><img src="SID/figures/10027_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/125.html" class="image featured"><img src="SID/figures/10125_00_100_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/40.html" class="image featured"><img src="SID/figures/10040_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/49.html" class="image featured"><img src="SID/figures/10049_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/155.html" class="image featured"><img src="SID/figures/10155_00_100_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						    <div class="2u">
+									<a href="SID/examples/174.html" class="image featured"><img src="SID/figures/10174_00_100_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+					</div>
+				
+				</div> -->
+
+          <p align="left"><strong>Comparation on nighttime images</strong></p>
+<!--		  
+					<div class="container" style="width:1200px">
+						<div class="row">
+						  <div class="2u">
+									<a href="SID/examples/11_BM3D.html" class="image featured"><img src="SID/figures/10011_00_100_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						  <div class="2u">
+									<a href="SID/examples/40_BM3D.html" class="image featured"><img src="SID/figures/10040_00_250_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+						  <div class="2u">
+									<a href="SID/examples/228_BM3D.html" class="image featured"><img src="SID/figures/10228_00_100_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>	
+
+						    <div class="2u">
+									<a href="SID/examples/51_BM3D.html" class="image featured"><img src="SID/figures/10051_00_300_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>	
+						    <div class="2u">
+									<a href="SID/examples/90_BM3D.html" class="image featured"><img src="SID/figures/10090_00_250_out_t.jpg" alt="" height="150px" width="50px"/></a>
+							</div>
+					</div>
+					
+          </div>	-->
+        
+          <p align="left"><strong>Ablations</strong></p>
